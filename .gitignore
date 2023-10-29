@@ -1,0 +1,6 @@
+login.txt
+/env_selenium_pom
+.pytest_cache
+geckodriver.log
+/example/*
+__pycache__
