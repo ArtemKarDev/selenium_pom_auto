@@ -19,6 +19,7 @@ def browser():
     chrome_options.add_argument("--disable-extensions")     # отключаем расширения
     chrome_options.add_argument("--disable-gpu")  # применять только программные средства ОС
     chrome_options.add_argument("--disable-dev-shm-usage")  #  преодолеть проблемы с ограниченными ресурсами
+    #chrome_options.add_experimental_option('prefs', {'intl.accept_languages': language})
     # chrome_options.add_argument("--headless")     # спец режим "без окна браузера"
 
     # with open("logfile.txt", "w", encoding="utf-8") as f: #лог файл будет создан в той же директории
@@ -34,30 +35,30 @@ def browser():
     driver.quit()
 
 
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
+# import pytest
+# from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.firefox import GeckoDriverManager
 
 
-def pytest_addoption(parser):
-    parser.addoption('--browser_name', action='store', default=None,
-                     help="Choose browser: chrome or firefox")
+# def pytest_addoption(parser):
+#     parser.addoption('--browser_name', action='store', default=None,
+#                     help="Choose browser: chrome or firefox")
 
 
-@pytest.fixture(scope="function")
-def browser(request):
-    browser_name = request.config.getoption("browser_name")
-    browser = None
-    if browser_name == "chrome":
-        service = Service(executable_path=ChromeDriverManager().install())
-        browser = webdriver.Chrome(service=service)
-    elif browser_name == "firefox":
-        service = Service(executable_path=GeckoDriverManager().install())
-        browser = webdriver.Firefox(service=service)
-    else:
-        raise pytest.UsageError("--browser_name should be chrome or firefox")
-    yield browser
-    print("\nquit browser..")
-    browser.quit()
+# @pytest.fixture(scope="function")
+# def browser(request):
+#     browser_name = request.config.getoption("browser_name")
+#     browser = None
+#     if browser_name == "chrome":
+#         service = Service(executable_path=ChromeDriverManager().install())
+#         browser = webdriver.Chrome(service=service)
+#     elif browser_name == "firefox":
+#         service = Service(executable_path=GeckoDriverManager().install())
+#         browser = webdriver.Firefox(service=service)
+#     else:
+#         raise pytest.UsageError("--browser_name should be chrome or firefox")
+#     yield browser
+#     print("\nquit browser..")
+#     browser.quit()
