@@ -8,7 +8,7 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        assert 'login' in BasePage.current_url, "Login url is not present"
+        assert 'login' in self.url, "Login url is not present"
 
     def should_be_login_form(self):
         assert self.is_element_present(*LoginPageLocators.Login_form), "Login form is not present"
