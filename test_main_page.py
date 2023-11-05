@@ -32,7 +32,6 @@ def test_guest_should_see_login_link(browser):
 
 
 
-
     # команда для запуска 
     # pytest -v  --language=en test_main_page.py
     # --tb=line  опция - нужно выводить только одну строку из лога каждого упавшего теста
