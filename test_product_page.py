@@ -16,7 +16,9 @@ def test_guest_can_add_product_to_basket(browser):
     page.solve_quiz_and_get_code()
 
     # проверить сообщение о добавлении товара
-    # проверить Сообщение со стоимостью корзины. Стоимость корзины совпадает с ценой товара
+    # проверить Сообщение со стоимостью корзины. Стоимость корзины совпадает с ценой товара    
+    page.should_be_message_about_adding()
+    page.should_be_message_basket_total()
 
 
 
