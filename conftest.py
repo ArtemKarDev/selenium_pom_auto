@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+import time
 
 @pytest.fixture(scope="session") # декаратор с помощью которого последующая функция с конфигами распространяется на сессию
 def browser():
@@ -30,7 +31,9 @@ def browser():
     service = Service(ChromeDriverManager().install())
     # запускаем браузер с указанными выше настройками
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    
     yield driver    # в случае падения теста принудительно закрывает окна браузера
+    time.sleep(3)
     print("\nquit browser..")
     driver.quit()
 
