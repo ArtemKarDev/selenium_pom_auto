@@ -6,7 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import time
 
-@pytest.fixture(scope="session") # декаратор с помощью которого последующая функция с конфигами распространяется на сессию
+@pytest.fixture(scope="module") # module session  декаратор с помощью которого последующая функция с конфигами распространяется на сессию
 def browser():
     """
     Main fixture
